@@ -39,10 +39,7 @@ const sequence = (start: number, limit?: number): number[] => {
   return result;
 };
 
-const detail = (
-  start: number,
-  limit?: number
-): {
+export interface ICollatzDetail {
   sequence: number[];
   max: number;
   min: number;
@@ -51,7 +48,9 @@ const detail = (
   even: number;
   odds: number;
   primes: number[];
-} => {
+}
+
+const detail = (start: number, limit?: number): ICollatzDetail => {
   const result = sequence(start, limit);
 
   const even = result.filter((num) => num % 2 === 0).length;
